@@ -1,0 +1,135 @@
+<nav class="navbar navbar-expand bg-info">
+    <div class="container-fluid">
+        <div class="navbar-nav">
+            <a class="nav-link btn btn-dark opacity-75 bg-gradient text-light" routerLink="/loginPage">LOGIN</a>
+            <a class="nav-link btn btn-dark opacity-75 bg-gradient text-light ms-1" routerLink="">SIGN-UP</a>
+            <a class="nav-link btn btn-dark opacity-75 bg-gradient text-light ms-1" routerLink=" ">ABOUT</a>
+            <a class="nav-link btn btn-dark opacity-75 bg-gradient text-light ms-1" routerLink=" ">CONTACT</a>
+            <a class="nav-link btn btn-dark opacity-75 bg-gradient text-light ms-1" routerLink=" ">DETAILS</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4">
+
+        </div>
+        <div class="col-7 col-sm-3 mt-5 p-3 bg-light border border-dark shadow-lg">
+            <h3 class="mb-3 text-center text-primary">CREATE YOUR ACCOUNT</h3>
+            <form [formGroup]="signUpForm" class="needs-validation">
+
+                <div class="row mt-4">
+                    <div class="col-6 mb-3">
+                        <h6 class="form-label">First Name :</h6>
+                        <input type="text" name="fName" formControlName="fName"
+                            [ngClass]="{'is-invalid':(submitted && signUpForm.controls['fName'].errors)}"
+                            class="form-control" required>
+
+                        <div *ngIf="(signUpForm.controls['fName'].touched && signUpForm.controls['fName'].invalid)||submitted"
+                            class="form-text text-danger">
+                            <small *ngIf="signUpForm.controls['fName'].errors?.['required']">
+                                First Name is required
+                            </small>
+                            <small *ngIf="signUpForm.controls['fName'].errors?.['minlength']">
+                                Last Name must be 3 letters.
+                            </small>
+                        </div>
+                   
+
+                    </div>
+                    <div class="col-6 mb-3">
+
+                        <h6 class="form-label">Last Name :</h6>
+
+                        <input type="text" name="lName" formControlName="lName" class="form-control"
+                            [ngClass]="{'is-invalid':(submitted && signUpForm.controls['lName'].errors)}" required>
+                        <div *ngIf="(signUpForm.controls['lName'].touched && signUpForm.controls['lName'].invalid)||submitted"
+                            class="form-text text-danger">
+                            <small *ngIf="signUpForm.controls['lName'].errors?.['required']">
+                                Last Name is required
+                            </small>
+                            <small *ngIf="signUpForm.controls['lName'].errors?.['minlength']">
+                                Last Name must be 3 letters.
+                            </small>
+                        </div>
+                  
+
+                    </div>
+                </div>
+                <div>
+                    <div class="mb-3">
+                        <h6 class="form-label">Email :</h6>
+                        <input type="email" name="email" formControlName="email" class="form-control"
+                            [ngClass]="{'is-invalid':(submitted && signUpForm.controls['email'].errors)}" required>
+                        <div *ngIf="(signUpForm.controls['email'].touched && signUpForm.controls['email'].invalid)||submitted"
+                            class="form-text text-danger">
+                            <small *ngIf="signUpForm.controls['email'].errors?.['required']">
+                                Email is required
+                            </small>
+                            <small *ngIf="signUpForm.controls['email'].errors?.['pattern']">
+                                Ex: abc@gmail.com
+                            </small>
+                        </div>
+                    
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="form-label">Password :</h6>
+                        <input type="password" name="psw" formControlName="password" class="form-control"
+                            [ngClass]="{'is-invalid':(submitted && signUpForm.controls['password'].invalid)}" required>
+                        <div *ngIf="(signUpForm.controls['password'].touched && signUpForm.controls['password'].invalid)||submitted"
+                            class="form-text text-danger">
+                            <small *ngIf="signUpForm.controls['password'].errors?.['required']">
+                                password is required
+                            </small>
+                            <small *ngIf="signUpForm.controls['password'].errors?.['pattern']">
+                                Ex: abcAbc@1
+                            </small>
+                        </div>
+                    
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="form-label">Date Of Birth :</h6>
+
+                        <input type="date" name="dob" formControlName="dob" class="form-control"
+                            [ngClass]="{'is-invalid':(submitted && signUpForm.controls['dob'].errors)}" required>
+                        <div *ngIf="(signUpForm.controls['dob'].touched && signUpForm.controls['dob'].invalid)||submitted"
+                            class="form-text text-danger">
+                            <small *ngIf="signUpForm.controls['dob'].errors?.['required']">
+                                dob is required
+                            </small>
+                        </div>
+                
+                    </div>
+                </div>
+                <h6 class="form-label">Gender :</h6>
+                <div class="row">
+                    <div *ngFor="let gender of genders" class="form-control col mb-3 ms-2 me-2">
+
+                        <input type="radio" name="gender" formControlName="gender" [value]="gender"
+                            [ngClass]="{'is-invalid':submitted && signUpForm.controls['gender'].errors}"
+                            required>{{gender}}
+                        </div>
+
+                    <div *ngIf="(signUpForm.controls['gender'].touched && signUpForm.controls['gender'].invalid)||submitted"
+                        class="form-text text-danger">
+                        <small *ngIf="signUpForm.controls['gender'].errors?.['required']">
+                            gender is required
+                        </small>
+                    </div>
+                 
+               
+                </div>
+            
+                <input type="submit" name="submit" class="submitButton bg-success form-control mb-3"
+                    (click)="addEmployeeData()" value="signUp">
+                <h6 class="ml-7">Already have an account? <a routerLink="/loginPage">Login</a></h6>
+
+
+            </form>
+        </div>
+        <div class="col-9">
+
+        </div>
+    </div>
+</div>
